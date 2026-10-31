@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador de Partidos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Simulador de Partidos</h1>
+  <p>Todos os partidos começam com a mesma economia (PIB 100, desemprego 10%, dívida 70% do PIB, crime 100, direitos 50) e enfrentam os mesmos choques por 8 anos. O que muda é a política que cada um promete aplicar.</p>
+  <p class="aviso"><b>Leia isto:</b> é um jogo, não uma previsão. As alavancas de cada partido são uma interpretação aproximada de planos e declarações públicas (de anos diferentes, 2018 a 2026), e as equações são simplificadas. O resultado depende muito dos pesos e das premissas abaixo, que você pode mudar.</p>
+</header>
+<main>
+  <section>
+    <h2>1. Seus valores e premissas</h2>
+    <div id="ctl" class="ctl"></div>
+    <label class="seed">Semente dos choques externos: <input id="seed" type="number" value="1" min="1"></label>
+    <button id="go">Simular 8 anos</button>
+  </section>
+  <section>
+    <h2>2. Resultado</h2>
+    <div class="scroll"><table id="rank"></table></div>
+    <p class="nota">Notas de 0 a 100. A nota final é a média ponderada pelos seus pesos. Direitos = proteção social e trabalhista, agenda de direitos civis e liberdade econômica, reduzidos se a dívida sair do controle.</p>
+    <label>Gráfico:
+      <select id="metric">
+        <option value="gdp">PIB</option><option value="u">Desemprego (%)</option><option value="crime">Índice de crime</option>
+        <option value="rights">Índice de direitos</option><option value="debt">Dívida (% do PIB)</option><option value="inf">Inflação (% ao ano)</option>
+      </select>
+    </label>
+    <canvas id="chart" width="720" height="300"></canvas>
+    <div id="leg"></div>
+  </section>
+  <section>
+    <h2>3. O que cada partido promete (e como virou número)</h2>
+    <div id="cards" class="cards"></div>
+  </section>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
